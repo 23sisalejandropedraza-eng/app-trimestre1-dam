@@ -21,6 +21,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".calculadora.CalculadoraActivity"
+            android:exported="false" />
+        <activity
+            android:name=".conversor.ConversorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".dados.DadosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".lista.ListaActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
