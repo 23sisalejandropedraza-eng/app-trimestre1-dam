@@ -15,7 +15,6 @@ import java.util.Locale
 
 class ConversorActivity : AppCompatActivity() {
 
-    // Valores base en EUR para convertir fácilmente entre monedas
     private val tasasEnEur = mapOf(
         "EUR" to 1.0,
         "USD" to 1.08,
@@ -69,7 +68,6 @@ class ConversorActivity : AppCompatActivity() {
             val tasaOrigen = tasasEnEur[monedaOrigen] ?: 1.0
             val tasaDestino = tasasEnEur[monedaDestino] ?: 1.0
 
-            // Pasamos primero a EUR y luego a la moneda destino
             val cantidadEnEur = cantidad / tasaOrigen
             val convertido = cantidadEnEur * tasaDestino
 
