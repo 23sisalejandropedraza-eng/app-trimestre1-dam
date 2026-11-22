@@ -20,76 +20,79 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvDado1"
-        android:layout_width="0dp"
+        android:id="@+id/tvNumDados"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="1"
-        android:textAlignment="center"
-        android:textSize="64sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tvDado2"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginTop="24dp"
+        android:text="Número de dados:"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSaludoDados" />
 
-    <TextView
-        android:id="@+id/tvDado2"
+    <EditText
+        android:id="@+id/etCantidadDados"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="1"
-        android:textAlignment="center"
-        android:textSize="64sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDado1"
+        android:layout_marginStart="12dp"
+        android:hint="Ej. 3"
+        android:inputType="number"
+        android:text="2"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNumDados"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvDado1"
-        app:layout_constraintTop_toTopOf="@+id/tvDado1" />
+        app:layout_constraintStart_toEndOf="@+id/tvNumDados"
+        app:layout_constraintTop_toTopOf="@+id/tvNumDados" />
 
     <TextView
-        android:id="@+id/tvResultadoTirada"
-        android:layout_width="0dp"
+        android:id="@+id/tvTipoDado"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Pulsa tirar para empezar"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Tipo de dado:"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDado1" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNumDados" />
 
-    <TextView
-        android:id="@+id/tvPuntosTotales"
+    <Spinner
+        android:id="@+id/spTipoDado"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Puntos acumulados: 0"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTipoDado"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvResultadoTirada" />
+        app:layout_constraintStart_toEndOf="@+id/tvTipoDado"
+        app:layout_constraintTop_toTopOf="@+id/tvTipoDado" />
 
     <Button
         android:id="@+id/btnTirar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Tirar dados"
+        android:layout_marginTop="28dp"
+        android:text="Lanzar dados"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPuntosTotales" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTipoDado" />
 
-    <Button
-        android:id="@+id/btnReiniciarDados"
+    <TextView
+        android:id="@+id/tvResultadosIndividuales"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Reiniciar marcador"
+        android:layout_marginTop="28dp"
+        android:text="Resultados: -"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnTirar" />
+
+    <TextView
+        android:id="@+id/tvSumaDados"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Suma total: 0"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvResultadosIndividuales" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

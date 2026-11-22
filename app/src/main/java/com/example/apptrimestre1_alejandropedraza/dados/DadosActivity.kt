@@ -1,7 +1,10 @@
 package com.example.apptrimestre1_alejandropedraza.dados
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,8 +14,6 @@ import com.example.apptrimestre1_alejandropedraza.R
 import kotlin.random.Random
 
 class DadosActivity : AppCompatActivity() {
-
-    private var puntosTotales = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,39 +33,41 @@ class DadosActivity : AppCompatActivity() {
             "Juego de dados"
         }
 
-        val tvDado1: TextView = findViewById(R.id.tvDado1)
-        val tvDado2: TextView = findViewById(R.id.tvDado2)
-        val tvResultadoTirada: TextView = findViewById(R.id.tvResultadoTirada)
-        val tvPuntosTotales: TextView = findViewById(R.id.tvPuntosTotales)
+        val etCantidadDados: EditText = findViewById(R.id.etCantidadDados)
+        val spTipoDado: Spinner = findViewById(R.id.spTipoDado)
         val btnTirar: Button = findViewById(R.id.btnTirar)
-        val btnReiniciar: Button = findViewById(R.id.btnReiniciarDados)
+        val tvResultados: TextView = findViewById(R.id.tvResultadosIndividuales)
+        val tvSuma: TextView = findViewById(R.id.tvSumaDados)
+
+        val tiposDado = listOf("4 caras", "6 caras", "8 caras", "10 caras", "12 caras", "20 caras")
+        val carasValores = listOf(4, 6, 8, 10, 12, 20)
+
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, tiposDado)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spTipoDado.adapter = adapter
+        spTipoDado.setSelection(1)
 
         btnTirar.setOnClickListener {
-            val d1 = Random.nextInt(1, 7)
-            val d2 = Random.nextInt(1, 7)
-            val suma = d1 + d2
+            val cantidad = etCantidadDados.text.toString().trim().toIntOrNull()
 
-            tvDado1.text = d1.toString()
-            tvDado2.text = d2.toString()
-
-            if (d1 == d2) {
-                val bonus = suma * 2
-                puntosTotales += bonus
-                tvResultadoTirada.text = "¡Dobles ($d1 y $d2)! Sumas $bonus puntos"
-            } else {
-                puntosTotales += suma
-                tvResultadoTirada.text = "Has sacado $d1 y $d2 (Total: $suma)"
+            if (cantidad == null || cantidad < 1 || cantidad > 20) {
+                tvResultados.text = "Introduce entre 1 y 20 dados"
+                tvSuma.text = "Suma total: 0"
+                return@setOnClickListener
             }
 
-            tvPuntosTotales.text = "Puntos acumulados: $puntosTotales"
-        }
+            val caras = carasValores[spTipoDado.selectedItemPosition]
+            val listaTiradas = mutableListOf<Int>()
+            var suma = 0
 
-        btnReiniciar.setOnClickListener {
-            puntosTotales = 0
-            tvDado1.text = "1"
-            tvDado2.text = "1"
-            tvResultadoTirada.text = "Pulsa tirar para empezar"
-            tvPuntosTotales.text = "Puntos acumulados: 0"
+            for (i in 1..cantidad) {
+                val valor = Random.nextInt(1, caras + 1)
+                listaTiradas.add(valor)
+                suma += valor
+            }
+
+            tvResultados.text = "Resultados: ${listaTiradas.joinToString(", ")}"
+            tvSuma.text = "Suma total: $suma"
         }
     }
 }
