@@ -33,6 +33,12 @@
         <activity
             android:name=".lista.ListaActivity"
             android:exported="false" />
+        <activity
+            android:name=".lista.FormularioArmaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".lista.DetalleArmaActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
