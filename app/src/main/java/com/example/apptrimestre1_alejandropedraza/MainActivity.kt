@@ -11,7 +11,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.apptrimestre1_alejandropedraza.calculadora.CalculadoraActivity
 import com.example.apptrimestre1_alejandropedraza.conversor.ConversorActivity
 import com.example.apptrimestre1_alejandropedraza.dados.DadosActivity
-import com.example.apptrimestre1_alejandropedraza.lista.ListaActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,10 +48,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btnLista.setOnClickListener {
-            val intent = Intent(this, ListaActivity::class.java)
-            intent.putExtra("USUARIO", etNombre.text.toString())
-            startActivity(intent)
-        }
     }
 }
